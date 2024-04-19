@@ -21,7 +21,7 @@ def main():
     level, answer = initialize_game()
     previous_guesses = []
 
-    print(f"Test String: {answer}")
+    # print(f"Test String: {answer}")
 
     while not game_over and lives != 0:
         print(f"You have {lives} attempts remaining.")
@@ -115,7 +115,7 @@ def choose_level():
     }
 
     level = input(
-        "Please select a level to play (easy, medium, hard): ").lower()
+        f"Please select a level to play (easy: {levels["easy"]} digits, medium: {levels["medium"]} digits, hard: {levels["hard"]} digits): ").lower()
     if level not in levels.keys():
         print("Error: Please enter a valid level (easy, medium, hard).")
         return choose_level()
@@ -126,7 +126,7 @@ def start_instructions():
     print(game_logo)
     print("Welcome to Mastermind!")
     print("Play against the computer and break the code to win.")
-    print("A random number from 0-7 will be generated "
+    print("A random number from 0-9 will be generated "
           "based on the level you've chosen.")
     print("You will have 10 attempts to guess the number.")
     print("Hints will be provided to help you along the way.")
