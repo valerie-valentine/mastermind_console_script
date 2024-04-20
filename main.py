@@ -89,7 +89,7 @@ def user_guess(level):
     return guess
 
 
-def check_user_guess(answer, guess):
+def validate_user_guess(answer, guess):
     correct_number = 0
     correct_location = 0
     answer_count = {}
