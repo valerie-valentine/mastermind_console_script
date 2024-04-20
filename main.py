@@ -1,4 +1,5 @@
 import random
+import requests
 from art import game_logo, win_logo, lost_logo
 
 # way to generate random number -> random.randint/ function; use random.org api?
@@ -21,7 +22,7 @@ def main():
     level, answer = initialize_game()
     previous_guesses = []
 
-    # print(f"Test String: {answer}")
+    print(f"Test String: {answer}")
 
     while not game_over and lives != 0:
         print(f"You have {lives} attempts remaining.")
@@ -63,14 +64,22 @@ def initialize_game():
 
 
 def random_number(digits):
-    # start = 10 ** (digits - 1)
-    start = 0
-    end = (10 ** digits) - 1
-    number = str(random.randint(start, end))
+    url = f'https://www.random.org/integers/?num={
+        digits}&min=0&max=9&col=1&base=10&format=plain&rnd=new'
 
-    if len(number) < digits:
-        number = number.zfill(digits)
-    return number
+    response = requests.get(url)
+
+    random_number = "".join(response.text.split())
+    return random_number
+
+    # start = 10 ** (digits - 1)
+    # start = 0
+    # end = (10 ** digits) - 1
+    # number = str(random.randint(start, end))
+
+    # if len(number) < digits:
+    #     number = number.zfill(digits)
+    # return number
 
 # check length of number if less than digits length
 # pre-pend how many zeros we need to make it the correct length
@@ -78,15 +87,16 @@ def random_number(digits):
 
 
 def user_guess(level):
-    guess = input("Make a guess: ")
-    if not guess.isnumeric():
-        print("Please enter a number with a numerical value.")
-        return user_guess(level)
-    if len(guess) != level:
-        print(f"Please enter a number with {level} digits.")
-        return user_guess(level)
+    while True:
+        guess = input("Make a guess: ")
+        if not guess.isnumeric():
+            print("Please enter a number with a numerical value.")
+            continue
+        if len(guess) != level:
+            print(f"Please enter a number with {level} digits.")
+            continue
 
-    return guess
+        return guess
 
 
 def validate_user_guess(answer, guess):
@@ -114,12 +124,14 @@ def choose_level():
         "hard": 8
     }
 
-    level = input(
-        f"Please select a level to play (easy: {levels["easy"]} digits, medium: {levels["medium"]} digits, hard: {levels["hard"]} digits): ").lower()
-    if level not in levels.keys():
-        print("Error: Please enter a valid level (easy, medium, hard).")
-        return choose_level()
-    return levels[level]
+    while True:
+        level = input(
+            f"Please select a level to play (easy: {levels["easy"]} digits, medium: {levels["medium"]} digits, hard: {levels["hard"]} digits): ").lower()
+        if level not in levels.keys():
+            print("Error: Please enter a valid level (easy, medium, hard).")
+            continue
+
+        return levels[level]
 
 
 def start_instructions():
