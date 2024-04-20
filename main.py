@@ -27,7 +27,7 @@ def main():
         print(f"You have {lives} attempts remaining.")
 
         guess = user_guess(level)
-        correct_number, correct_location = check_user_guess(answer, guess)
+        correct_number, correct_location = validate_user_guess(answer, guess)
 
         if guess in previous_guesses:
             print("You have already guess that number.")
