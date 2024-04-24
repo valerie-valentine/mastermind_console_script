@@ -2,19 +2,6 @@ import random
 import requests
 from art import game_logo, win_logo, lost_logo
 
-# way to generate random number -> random.randint/ function; use random.org api?
-# take user input -> input function
-# validate user input -> raise exception?/ ask for valid input
-# create and display board -> function/ print
-# check guess for valid/invalid guess, winning combination
-# provide a hint/feedback
-# way to keep game repeating until finished -> loop
-# choose level
-# restart game
-
-# create a board that has the number as a key & lists as values
-# create a list of tuples
-
 
 def main():
     game_over = False
@@ -83,7 +70,6 @@ def random_number(digits):
 
 # check length of number if less than digits length
 # pre-pend how many zeros we need to make it the correct length
-# MUST REFEACTOR AND USE API!!
 
 
 def user_guess(level):
