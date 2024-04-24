@@ -2,45 +2,69 @@ import random
 import requests
 from art import game_logo, win_logo, lost_logo
 
+# way to generate random number -> random.randint/ function; use random.org api?
+# take user input -> input function
+# validate user input -> raise exception?/ ask for valid input
+# create and display board -> function/ print
+# check guess for valid/invalid guess, winning combination
+# provide a hint/feedback
+# way to keep game repeating until finished -> loop
+# choose level
+# restart game
+
+# create a board that has the number as a key & lists as values
+# create a list of tuples
+
 
 def main():
-    game_over = False
-    lives = 10
-    level, answer = initialize_game()
-    previous_guesses = []
+    while True:
+        game_over = False
+        lives = 10
+        level, answer = initialize_game()
+        previous_guesses = []
 
-    print(f"Test String: {answer}")
+        print(f"Test String: {answer}")
 
-    while not game_over and lives != 0:
-        print(f"You have {lives} attempts remaining.")
+        while not game_over and lives != 0:
+            print(f"You have {lives} attempts remaining.")
 
-        guess = user_guess(level)
-        correct_number, correct_location = validate_user_guess(answer, guess)
+            guess = user_guess(level)
+            correct_number, correct_location = validate_user_guess(
+                answer, guess)
 
-        if guess in previous_guesses:
-            print("You have already guess that number.")
+            if guess in previous_guesses:
+                print("You have already guess that number.")
+                continue
+
+            previous_guesses.append(guess)
+
+            if correct_number == 0 and correct_location == 0:
+                print("All incorrect")
+            else:
+                print(f"{correct_number} correct number and {
+                    correct_location} correct location")
+
+            if guess == answer:
+                print(win_logo)
+                print(f"The answer was: {answer}")
+                game_over = True
+
+            lives -= 1
+
+        if lives == 0:
+            print(lost_logo)
+            print(f"The correct answer was: {answer}")
+
+        play_again = input(
+            "Would you like to play again? (Enter 'yes' or 'no'): ").lower()
+        if play_again == "no":
+            print("Thanks for playing!")
+            return
+        elif play_again == "yes":
             continue
-
-        previous_guesses.append(guess)
-
-        if correct_number == 0 and correct_location == 0:
-            print("All incorrect")
         else:
-            print(f"{correct_number} correct number and {
-                  correct_location} correct location")
-
-        if guess == answer:
-            print(win_logo)
-            print(f"The answer was: {answer}")
-            game_over = True
-            play_again()
-
-        lives -= 1
-
-    if lives == 0:
-        print(lost_logo)
-        print(f"The correct answer was: {answer}")
-        play_again()
+            print("Please enter a valid response.")
+            return
 
 
 def initialize_game():
@@ -70,6 +94,7 @@ def random_number(digits):
 
 # check length of number if less than digits length
 # pre-pend how many zeros we need to make it the correct length
+# MUST REFEACTOR AND USE API!!
 
 
 def user_guess(level):
@@ -131,17 +156,17 @@ def start_instructions():
     print("Good luck!")
 
 
-def play_again():
-    print("Would you like to play again?")
-    play_again = input(
-        "Enter 'yes' to play again or 'no' to quit: ").lower()
-    if play_again == "yes":
-        main()
-    elif play_again == "no":
-        print("Thanks for playing!")
-    else:
-        print("Please enter a valid response.")
-        return play_again()
+# def play_again():
+#     print("Would you like to play again?")
+#     play_again = input(
+#         "Enter 'yes' to play again or 'no' to quit: ").lower()
+#     if play_again == "yes":
+#         main()
+#     elif play_again == "no":
+#         print("Thanks for playing!")
+#     else:
+#         print("Please enter a valid response.")
+#         return play_again()
 
 
 main()
