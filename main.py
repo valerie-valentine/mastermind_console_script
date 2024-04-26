@@ -2,19 +2,6 @@ import random
 import requests
 from art import game_logo, win_logo, lost_logo
 
-# way to generate random number -> random.randint/ function; use random.org api?
-# take user input -> input function
-# validate user input -> raise exception?/ ask for valid input
-# create and display board -> function/ print
-# check guess for valid/invalid guess, winning combination
-# provide a hint/feedback
-# way to keep game repeating until finished -> loop
-# choose level
-# restart game
-
-# create a board that has the number as a key & lists as values
-# create a list of tuples
-
 
 def main():
     while True:
@@ -23,45 +10,46 @@ def main():
         level, answer = initialize_game()
         previous_guesses = []
 
-        print(f"Test String: {answer}")
+        print(f"Test String: {answer} \n")
 
         while not game_over and lives != 0:
-            print(f"You have {lives} attempts remaining.")
+            print(f"You have {lives} attempts remaining. \n")
 
-            guess = user_guess(level)
-            correct_number, correct_location = validate_user_guess(
+            guess = get_valid_guess(level)
+            correct_number, correct_location = check_user_guess(
                 answer, guess)
 
             if guess in previous_guesses:
-                print("You have already guess that number.")
+                print("You have already guessed that number. \n")
                 continue
 
             previous_guesses.append(guess)
 
             if correct_number == 0 and correct_location == 0:
-                print("All incorrect")
+                print("All incorrect \n")
             else:
                 print(f"{correct_number} correct number and {
-                    correct_location} correct location")
+                    correct_location} correct location \n")
 
             if guess == answer:
                 print(win_logo)
-                print(f"The answer was: {answer}")
+                print(f"The answer was: {answer} \n")
                 game_over = True
 
             lives -= 1
 
         if lives == 0:
             print(lost_logo)
-            print(f"The correct answer was: {answer}")
+            print(f"The correct answer was: {answer} \n")
 
         play_again = input(
             "Would you like to play again? (Enter 'yes' or 'no'): ").lower()
+
+        if play_again == "yes":
+            continue
         if play_again == "no":
             print("Thanks for playing!")
             return
-        elif play_again == "yes":
-            continue
         else:
             print("Please enter a valid response.")
             return
@@ -83,34 +71,21 @@ def random_number(digits):
     random_number = "".join(response.text.split())
     return random_number
 
-    # start = 10 ** (digits - 1)
-    # start = 0
-    # end = (10 ** digits) - 1
-    # number = str(random.randint(start, end))
 
-    # if len(number) < digits:
-    #     number = number.zfill(digits)
-    # return number
-
-# check length of number if less than digits length
-# pre-pend how many zeros we need to make it the correct length
-# MUST REFEACTOR AND USE API!!
-
-
-def user_guess(level):
+def get_valid_guess(level):
     while True:
         guess = input("Make a guess: ")
         if not guess.isnumeric():
-            print("Please enter a number with a numerical value.")
+            print("Please enter a number with a numerical value. \n")
             continue
         if len(guess) != level:
-            print(f"Please enter a number with {level} digits.")
+            print(f"Please enter a number with {level} digits. \n")
             continue
 
         return guess
 
 
-def validate_user_guess(answer, guess):
+def check_user_guess(answer, guess):
     correct_number = 0
     correct_location = 0
     answer_count = {}
@@ -147,26 +122,25 @@ def choose_level():
 
 def start_instructions():
     print(game_logo)
-    print("Welcome to Mastermind!")
+    print("Welcome to Mastermind! \n")
     print("Play against the computer and break the code to win.")
-    print("A random number from 0-9 will be generated "
-          "based on the level you've chosen.")
-    print("You will have 10 attempts to guess the number.")
+    print("A random number from the digits 0-9 will be generated "
+          "based on the level you've chosen. \n")
+    print("You will have 10 attempts to guess the number. \n")
     print("Hints will be provided to help you along the way.")
-    print("Good luck!")
-
-
-# def play_again():
-#     print("Would you like to play again?")
-#     play_again = input(
-#         "Enter 'yes' to play again or 'no' to quit: ").lower()
-#     if play_again == "yes":
-#         main()
-#     elif play_again == "no":
-#         print("Thanks for playing!")
-#     else:
-#         print("Please enter a valid response.")
-#         return play_again()
+    print("Good luck! \n")
 
 
 main()
+
+# start = 10 ** (digits - 1)
+# start = 0
+# end = (10 ** digits) - 1
+# number = str(random.randint(start, end))
+
+# if len(number) < digits:
+#     number = number.zfill(digits)
+# return number
+
+# check length of number if less than digits length
+# pre-pend how many zeros we need to make it the correct length
