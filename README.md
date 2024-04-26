@@ -32,4 +32,3 @@ Here's an explanation of the functions used in the `main.py` script:
 - `choose_level`: validates and retrieves user's input for level (code length).
 - start_instructions: prints the instructions to user.
 
-Enjoy playing Mastermind! Have fun playing the Mastermind game and try to crack the code within the limited number of attempts. Good luck!
