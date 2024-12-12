@@ -2,6 +2,8 @@
 
 Mastermind is a classic code-breaking game where you have to guess the correct combination of numbers within a limited number of attempts. This Python script allows you to play the game with different difficulty levels: easy, medium, and hard.
 
+**Check out the Website: [Mastermind](https://valerie-valentine.github.io/mastermind-frontend)**
+
 ## How to Play
 
 1. Run the `main.py` script in your Python environment.
