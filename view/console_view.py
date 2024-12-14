@@ -85,3 +85,6 @@ class View:
                 return user_input
             else:
                 return user_input
+
+    def display_random_number_api_error_feedback(self):
+        print("Failed to generate an answer from API. Please try again in a few.")

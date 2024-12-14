@@ -15,10 +15,18 @@ class Controller:
         level = self.view.get_user_difficulty_level()
         self.game = Game(level)
         self.game.generate_answer()
+
         print(f"Debugging Test String: {self.game.answer} \n")
+
+        # To check if we have a valid answer created otherwise cannot play game. Restart application.
+        if not self.game.answer:
+            self.view.display_random_number_api_error_feedback()
+            return
+
         self.play_game()
 
     # Handles player turns & game control flow
+
     def play_game(self):
         # play_game -> controls flow of game (runs game loop), interacts with model/game/guess to check guesses and the view to display feedback
         while self.game.game_status == "In Progress":

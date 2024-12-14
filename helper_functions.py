@@ -12,7 +12,7 @@ def random_number_api(digits):
             return random_number
         else:
             # Returns 503 for invalid inputs, errors or service unavailable
-            print(f"Failed to connect to random generator API status code:{
+            print(f"Failed to connect to random generator API status code: {
                 response.status_code}")
     # Handles extra cases like connection timeouts/ DNS issues
     except requests.exceptions.RequestException as e:
