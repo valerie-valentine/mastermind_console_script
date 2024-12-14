@@ -4,10 +4,10 @@ from view.console_view import View
 
 
 class Controller:
-    def __init__(self):
+    def __init__(self, game=None):
         # Create view & game attributes and instantiates a View
         self.view = View()
-        self.game = None
+        self.game = game
 
     # start game function -> initializes game & gets user input to set game level and generate answer
     def start_game(self):
@@ -47,5 +47,5 @@ class Controller:
         play_again = self.view.get_restart_game_input()
 
         if play_again == "yes":
-            # Reset game with self.start_game, remove controller (not necessary)
+            # Reset game with self.start_game
             self.start_game()
