@@ -46,10 +46,6 @@ class Controller:
             # check guess is wrong and reduce lives or change game_status & return if (won/lost) - model
             self.game.submit_user_guess(current_guess)
 
-        # # Handles gameover feedback
-        # self.view.display_game_over_feedback(
-        #     self.game.answer, self.game.game_status)
-        # self.play_another_game()
         self.check_game_over()
 
     def check_game_over(self):
