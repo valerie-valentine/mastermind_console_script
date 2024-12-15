@@ -62,5 +62,5 @@ Another challenge involved the random.org API, which often returned "service una
 - tests
 - art
 
-## Future updates
+# Future updates
 I would like to extend to multi-player or add a timer.
