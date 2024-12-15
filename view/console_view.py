@@ -12,7 +12,6 @@ class View:
         print("Hints will be provided to help you along the way. \n")
         print("Good luck! \n")
 
-    # Maybe move this function to the view & then call in play game method of controller
     def get_user_difficulty_level(self):
         levels = {
             "easy": 4,
@@ -29,35 +28,24 @@ class View:
                 return levels[level]
 
     def display_lives_remaining(self, lives):
-        # lives will get passed in from the controller
         print(f"You have {lives} attempts remaining. \n")
 
     def get_valid_guess(self, level, previous_guesses):
-        # control flow concept - move to controller? / knows a little bit about validation & what constitutes a valid guess
-        # controller passes guess into game.is_valid_guess method - a validation method
-        # Maybe okay in view because it is basic validation?
-
-        # maybe move validation to game or guess model????
         while True:
-            # User input - asks user to make a guess - view
             guess = input(
                 f"Make a guess: \n"
             )
             if not guess.isnumeric():
-                # User feedback - checks for numeric value - view
                 print("Please enter a number with a numerical value. \n")
             elif len(guess) != level:
-                # User feedback - checks for correct length - view
                 print(f"Please enter a number with {level} digits. \n")
             elif guess in [guess.guess_value for guess in previous_guesses]:
-                # make this a view function to give feedback & get a valid new guess
                 print(f"You have already guessed {
                       guess}. Please try again. \n")
             else:
                 return guess
 
     def display_guess_feedback(self, correct_number, correct_location):
-        # correct_number & correct_location get passed in from the controller
         if correct_number == 0 and correct_location == 0:
             print("All incorrect \n")
         else:
@@ -65,8 +53,6 @@ class View:
                   correct_location} correct location \n")
 
     def display_game_over_feedback(self, answer, game_status):
-        # displays the feedback when a game is over -> won or loss
-        # game status & answer will get passed in from the controller
         if game_status == "Won":
             print(win_logo)
             print(f"Congrats, you guessed the correct answer! \n")
