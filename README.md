@@ -51,7 +51,7 @@ Testing
 
 To ensure the stability of the application, I also created tests to validate the Minimum Viable Product (MVP) functionality. These tests helped me identify potential edge cases early and confirm that core features, such as submitting guesses and tracking game state, behaved as expected.
 
-### Challenges
+## Challenges
 
 One of the major challenges I encountered while refactoring was breaking the application. This taught me to implement small, incremental changes and test often. I also relied heavily on branching to experiment with modifications, ensuring I could keep track of the most stable versions of my application. Regular small commits also helped me manage and troubleshoot changes effectively.
 
@@ -62,5 +62,5 @@ Another challenge involved the random.org API, which often returned "service una
 - tests
 - art
 
-# Future updates
+### Future updates
 I would like to extend to multi-player or add a timer.
