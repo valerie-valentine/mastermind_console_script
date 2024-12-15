@@ -6,12 +6,11 @@ class Guess:
         self.correct_location = correct_location
 
     def judge_guess(self, answer):
-        # method that processes/evaluates the correct_number and correct_location for a guess & sets it
+        # method that evaluates the correct_number and correct_location for a guess & updates the guess model
         correct_number = 0
         correct_location = 0
         answer_count = {}
 
-        # By creating a dictionary of the answer, we can check if the user's guess is in the answer and if it is in the correct location accounting for duplicates
         for num in answer:
             answer_count[num] = answer_count.get(num, 0) + 1
 
