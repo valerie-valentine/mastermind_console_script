@@ -5,7 +5,7 @@ Mastermind is a classic code-breaking game where you have to guess the correct c
 **Check out the Website: [Mastermind](https://valerie-valentine.github.io/mastermind-frontend)**
 
 ## Code Design & Considerations
-While reattempting this take-home challenge, my primary goal was to focus on code organization and the overall architecture of my program. During the first iteration of my console application, all of my code resided in a single file (main.py), making it challenging to scale or maintain. This time, I focused on encapsulating functionality and ensuring a clear separation of concerns. To achieve this, I implemented an MVC (Model-View-Controller) design pattern, which provided a structured approach to organize my application into distinct layers:
+While reattempting this take-home challenge, my primary goal was to focus on code organization and the overall architecture of my program. During the first iteration of my console application, I took an imperative approach to programming. Meaning all of my code resided in a single file (main.py), making it challenging to scale or maintain. This time, I focused on encapsulating functionality and ensuring a clear separation of concerns. To achieve this, I incorporated object-oriented programming & implemented an MVC (Model-View-Controller) design pattern , which provided a structured approach to organize my application into distinct layers:
 
     Model (Data Layer)
         The Model serves as the data layer and incorporates all game-related business logic.
