@@ -23,7 +23,8 @@ While reattempting this take-home challenge, my primary goal was to focus on cod
 
 ## Approach and Execution
 
-It took time to conceptualize how best to implement this pattern. Breaking my code into distinct functional components helped me better understand separation of concerns. I focused on ensuring that each component had a clearly defined responsibility:
+It took time to conceptualize how best to implement this pattern. I begand this time with working application and then had to work backwards to reinvent the whole application. 
+I decided to break my code into distinct functional components  and this allowed me to better understand separation of concerns and think about what the functionality and responisbility of each piece of code should be, allowing me to better understand the seperation of concerns. I focused on ensuring that each component had a clearly defined responsibility:
 
     Game and Guess classes: Encapsulate related game logic, such as submitting a user guess, checking if the game is over, and managing gameplay state. This also allowed me to refactor many of the original helper functions from main.py into instance methods, aligning functionality more naturally with the objects they represent.
     Controller class: Facilitates communication between the Model and View, ensuring clean interaction and avoiding direct coupling.
